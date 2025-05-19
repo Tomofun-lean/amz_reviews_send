@@ -3,7 +3,7 @@
 ## 專案簡介
 
 本專案提供兩支 Python 腳本，自動整理 Amazon 商品評論（正面/負面），並寄送彙整結果到指定 Email。  
-適用於內部定期回報產品口碑、快速掌握使用者反饋。
+
 
 - `review_auto_send_pos.py`：整理「正面」評論並寄送報告
 - `review_auto_send_neg.py`：整理「負面」評論並寄送報告
