@@ -1,0 +1,9 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg
+*.egg-info/
+raw_reviews.txt
+dist/
+build/
+.env

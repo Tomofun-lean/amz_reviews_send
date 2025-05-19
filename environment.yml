@@ -1,0 +1,12 @@
+name: amz_reviews_send
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - requests
+    - beautifulsoup4
+    - openai
+    - python-dateutil
+    - python-dotenv
