@@ -1,6 +1,7 @@
 import os
 import smtplib
 import ssl
+from datetime import datetime
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from dotenv import load_dotenv
@@ -148,6 +149,7 @@ except Exception as e:
         exit(1)
 
 # 發送電子郵件
+today_str = datetime.now().strftime("%m/%d")
 subject = f"Amazon Reviews Weekly Report ({country} 正面回應)"
 body = f"""\
 Hi Team,
