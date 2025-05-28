@@ -42,11 +42,14 @@
 在專案根目錄建立 `.env` 檔，格式如下：
 
 ```
-OPENAI_API_KEY=sk-xxxxxxx
-SENDER_EMAIL=xxxx@gmail.com
-SENDER_PASSWORD=xxxxxxx
-RECEIVER_EMAIL=yyyy@tomofun.com
+OPENAI_API_KEY= OpenAI金鑰
+SENDER_EMAIL= 寄件人信箱
+SENDER_PASSWORD= 寄件人信箱密碼或應用程式密碼
 ```
+
+- **RECEIVER_EMAIL 不需設定，程式會自動根據腳本名稱決定收件人：**
+    - 執行 `review_auto_send_pos.py` 會寄到 `amz_reviews_positive@tomofun.com`
+    - 執行 `review_auto_send_neg.py` 會寄到 `amz_reviews_negative@tomofun.com`
 
 - **注意：Gmail 必須用 [App Password](https://support.google.com/accounts/answer/185833?hl=zh-Hant)，不能用一般登入密碼！**
 

@@ -29,6 +29,13 @@ if not all([OPENAI_API_KEY, SENDER_EMAIL, SENDER_PASSWORD, RECEIVER_EMAIL]):
 client = OpenAI(api_key=OPENAI_API_KEY)
 print("OpenAI 客戶端初始化完成")
 
+# 根據檔名決定收件人
+script_name = os.path.basename(__file__)
+if "neg" in script_name:
+    RECEIVER_EMAIL = "amz_reviews_negative@tomofun.com"
+else:
+    RECEIVER_EMAIL = "amz_reviews_positive@tomofun.com"
+
 # 用於獲取地區全名的函數
 def get_region_full_name(region_code):
     region_names = {
@@ -149,7 +156,7 @@ except Exception as e:
         exit(1)
 
 # 發送電子郵件
-subject = f"Amazon Reviews Weekly Report ({country} 負面回應)"
+subject = f"[{country}] Weekly negative feedback collection"
 body = f"""\
 Hi Team,
 

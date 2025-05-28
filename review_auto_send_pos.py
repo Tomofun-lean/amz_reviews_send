@@ -13,7 +13,13 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 SENDER_EMAIL   = os.getenv("SENDER_EMAIL")
 SENDER_PASSWORD= os.getenv("SENDER_PASSWORD")
-RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL")
+
+# 根據檔名決定收件人
+script_name = os.path.basename(__file__)
+if "neg" in script_name:
+    RECEIVER_EMAIL = "amz_reviews_negative@tomofun.com"
+else:
+    RECEIVER_EMAIL = "amz_reviews_positive@tomofun.com"
 
 print(f"環境設置檢查:")
 print(f"- OpenAI API 金鑰: {'已設置' if OPENAI_API_KEY else '未設置'}")
@@ -150,7 +156,7 @@ except Exception as e:
 
 # 發送電子郵件
 today_str = datetime.now().strftime("%m/%d")
-subject = f"Amazon Reviews Weekly Report ({country} 正面回應)"
+subject = f"[{country}] Weekly positive feedback collection"
 body = f"""\
 Hi Team,
 
