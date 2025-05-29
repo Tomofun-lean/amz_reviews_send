@@ -13,7 +13,13 @@ load_dotenv()
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 SENDER_EMAIL   = os.getenv("SENDER_EMAIL")
 SENDER_PASSWORD= os.getenv("SENDER_PASSWORD")
-RECEIVER_EMAIL = os.getenv("RECEIVER_EMAIL")
+
+# 根據檔名決定收件人
+script_name = os.path.basename(__file__)
+if "neg" in script_name:
+    RECEIVER_EMAIL = "amz_reviews_negative@tomofun.com"
+else:
+    RECEIVER_EMAIL = "amz_reviews_positive@tomofun.com"
 
 print(f"環境設置檢查:")
 print(f"- OpenAI API 金鑰: {'已設置' if OPENAI_API_KEY else '未設置'}")
@@ -28,13 +34,6 @@ if not all([OPENAI_API_KEY, SENDER_EMAIL, SENDER_PASSWORD, RECEIVER_EMAIL]):
 # 初始化新版 SDK 客戶端
 client = OpenAI(api_key=OPENAI_API_KEY)
 print("OpenAI 客戶端初始化完成")
-
-# 根據檔名決定收件人
-script_name = os.path.basename(__file__)
-if "neg" in script_name:
-    RECEIVER_EMAIL = "amz_reviews_negative@tomofun.com"
-else:
-    RECEIVER_EMAIL = "amz_reviews_positive@tomofun.com"
 
 # 用於獲取地區全名的函數
 def get_region_full_name(region_code):
